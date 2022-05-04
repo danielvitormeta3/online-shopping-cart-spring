@@ -1,7 +1,6 @@
 package br.com.meta3group.productservice.services;
 
 import br.com.meta3group.productservice.models.Product;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 

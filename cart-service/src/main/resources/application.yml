@@ -1,0 +1,36 @@
+server:
+  port: 8082
+
+spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:8085
+        management-base-url: http://localhost:8082/
+        instance:
+          prefer-ip: true
+  application:
+    name: cart-service
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  hibernate:
+    ddl-auto: update
+    show-sql: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/cart-service
+    username: postgres
+    password: 1234
+    initialization-mode: always
+    initialize: true
+    schema: classpath:/sql/schema.sql
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8099/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
