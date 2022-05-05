@@ -25,7 +25,7 @@ public class CartServiceImpl implements CartService{
 
     @Override
     public Cart removeItemFromCart(Long productId) {
-        Cart cartToBeRemoved = cartRepository.findByProductId(productId);
+        Cart cartToBeRemoved = cartRepository.findById(productId).orElse(null);
         if(cartToBeRemoved == null){
             return null;
         }

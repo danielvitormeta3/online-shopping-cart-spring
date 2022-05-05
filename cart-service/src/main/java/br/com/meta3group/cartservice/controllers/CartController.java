@@ -14,17 +14,17 @@ import java.util.List;
 public class CartController {
 
     @Autowired
-    private CartService productService;
+    private CartService cartService;
 
     @PostMapping
     public ResponseEntity<Cart> create(@RequestBody Cart cart){
-        Cart createdCart = productService.addItemToCart(cart);
+        Cart createdCart = cartService.addItemToCart(cart);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdCart);
     }
 
     @PutMapping("/increment")
     public ResponseEntity<Cart> incrementCartItem(@RequestBody Long productId){
-        Cart updatedCart = productService.incrementCartItem(productId);
+        Cart updatedCart = cartService.incrementCartItem(productId);
         if(updatedCart == null){
             return ResponseEntity.notFound().build();
         }
@@ -33,7 +33,7 @@ public class CartController {
 
     @PutMapping("/decrement")
     public ResponseEntity<Cart> decrementCartItem(@RequestBody Long productId){
-        Cart updatedCart = productService.decrementCartItem(productId);
+        Cart updatedCart = cartService.decrementCartItem(productId);
         if(updatedCart == null){
             return ResponseEntity.notFound().build();
         }
@@ -41,8 +41,8 @@ public class CartController {
     }
 
     @DeleteMapping
-    public ResponseEntity<Cart> removeItemFromCart(@RequestBody Long productId){
-        Cart deletedCart = productService.removeItemFromCart(productId);
+    public ResponseEntity<Cart> removeItemFromCart(@RequestBody Long cartId){
+        Cart deletedCart = cartService.removeItemFromCart(cartId);
 
         if(deletedCart == null){
             return ResponseEntity.notFound().build();
