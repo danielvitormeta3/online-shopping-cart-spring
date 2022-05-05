@@ -16,6 +16,12 @@ public class CartController {
     @Autowired
     private CartService cartService;
 
+    @GetMapping(value = "/{id}")
+    public ResponseEntity get(@PathVariable("id") Long userId){
+        List<Cart> cartItemsByUser = cartService.getAllItemsByUser(userId);
+        return ResponseEntity.ok(cartItemsByUser);
+    }
+
     @PostMapping
     public ResponseEntity<Cart> create(@RequestBody Cart cart){
         Cart createdCart = cartService.addItemToCart(cart);
