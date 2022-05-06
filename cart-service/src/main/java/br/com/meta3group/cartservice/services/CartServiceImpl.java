@@ -24,8 +24,8 @@ public class CartServiceImpl implements CartService{
     }
 
     @Override
-    public Cart removeItemFromCart(Long productId) {
-        Cart cartToBeRemoved = cartRepository.findById(productId).orElse(null);
+    public Cart removeItemFromCart(Long cartId) {
+        Cart cartToBeRemoved = cartRepository.findById(cartId).orElse(null);
         if(cartToBeRemoved == null){
             return null;
         }
@@ -34,8 +34,8 @@ public class CartServiceImpl implements CartService{
     }
 
     @Override
-    public Cart incrementCartItem(Long productId) {
-        Cart cartToBeIncremented = cartRepository.findByProductId(productId);
+    public Cart incrementCartItem(Long cartId) {
+        Cart cartToBeIncremented = cartRepository.findById(cartId).orElse(null);
         if(cartToBeIncremented == null){
             return null;
         }
@@ -45,8 +45,8 @@ public class CartServiceImpl implements CartService{
     }
 
     @Override
-    public Cart decrementCartItem(Long productId) {
-        Cart cartToBeDecremented = cartRepository.findByProductId(productId);
+    public Cart decrementCartItem(Long cartId) {
+        Cart cartToBeDecremented = cartRepository.findById(cartId).orElse(null);
         if(cartToBeDecremented == null){
             return null;
         }

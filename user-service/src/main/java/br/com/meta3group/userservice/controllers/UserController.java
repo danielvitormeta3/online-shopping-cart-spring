@@ -16,7 +16,6 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<User> create(@RequestBody User user){
-        System.out.println("USUÁRIO:" + user.getEmail());
         User createdProduct = userService.createUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdProduct);
     }

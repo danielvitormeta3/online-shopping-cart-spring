@@ -29,8 +29,8 @@ public class CartController {
     }
 
     @PutMapping("/increment")
-    public ResponseEntity<Cart> incrementCartItem(@RequestBody Long productId){
-        Cart updatedCart = cartService.incrementCartItem(productId);
+    public ResponseEntity<Cart> incrementCartItem(@RequestBody Long cartId){
+        Cart updatedCart = cartService.incrementCartItem(cartId);
         if(updatedCart == null){
             return ResponseEntity.notFound().build();
         }
